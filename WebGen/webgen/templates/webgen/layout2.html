@@ -40,48 +40,34 @@
       // Bootstrap ID
       gtag('config', 'UA-118965717-5');
     </script>
-    <!--  {% static '' %} -->
   </head>
   <body class="app header-fixed sidebar-fixed aside-menu-fixed sidebar-lg-show">
     <header class="app-header navbar">
       <button class="navbar-toggler sidebar-toggler d-lg-none mr-auto" type="button" data-toggle="sidebar-show">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <a class="navbar-brand" href="{% url 'home' %}">
-        <img class="navbar-brand-full" src="{% static 'webgen/img/brand/logo.svg' %}" width="89" height="25" alt="CoreUI Logo"> 
-        <img class="navbar-brand-minimized" src="{% static 'webgen/img/brand/sygnet.svg' %}" width="30" height="30" alt="CoreUI Logo">
+      <a class="navbar-brand" href="#">
+        <img class="navbar-brand-full" src="{% static 'img/brand/logo.svg' %}" width="89" height="25" alt="CoreUI Logo">
+        <img class="navbar-brand-minimized" src="{% static 'img/brand/sygnet.svg' %}" width="30" height="30" alt="CoreUI Logo">
       </a>
       <button class="navbar-toggler sidebar-toggler d-md-down-none" type="button" data-toggle="sidebar-lg-show">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <ul class="nav navbar-nav d-md-down-none">
-        <li class="nav-item px-3">
-          <a class="nav-link" href="#">Dashboard</a>
-        </li>
-        <li class="nav-item px-3">
-          <a class="nav-link" href="#">Users</a>
-        </li>
-        <li class="nav-item px-3">
-          <a class="nav-link" href="#">Settings</a>
-        </li>
-      </ul>
       <ul class="nav navbar-nav ml-auto">
         <li class="nav-item d-md-down-none">
           <a class="nav-link" href="#">
-            <i class="icon-bell"></i>
-            <span class="badge badge-pill badge-danger">5</span>
           </a>
         </li>
         <li class="nav-item d-md-down-none">
           <a class="nav-link" href="#">
-            <i class="icon-list"></i>
+            
           </a>
         </li>
         <li class="nav-item d-md-down-none">
           <a class="nav-link" href="#">
-            <i class="icon-location-pin"></i>
+            
           </a>
-        </li>
+        </li> 
         <li class="nav-item dropdown">
           <a class="nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
             <img class="img-avatar" src="{% static 'webgen/img/avatars/6.jpg' %}" alt="admin@bootstrapmaster.com">
@@ -121,20 +107,11 @@
               <i class="fa fa-file"></i> Projects
               <span class="badge badge-primary">42</span>
             </a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#">
-              <i class="fa fa-shield"></i> Lock Account</a>
-            <a class="dropdown-item" href="#">
+            <a class="dropdown-item" href="{% url 'logout' %}">
               <i class="fa fa-lock"></i> Logout</a>
           </div>
         </li>
       </ul>
-      <button class="navbar-toggler aside-menu-toggler d-md-down-none" type="button" data-toggle="aside-menu-lg-show">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <button class="navbar-toggler aside-menu-toggler d-lg-none" type="button" data-toggle="aside-menu-show">
-        <span class="navbar-toggler-icon"></span>
-      </button>
     </header>
     <div class="app-body">
       <div class="sidebar">
@@ -149,11 +126,11 @@
             <li class="nav-title">Theme</li>
             <li class="nav-item">
               <a class="nav-link" href="#">
-                <i class="nav-icon icon-drop"></i> About</a>
+                <i class="nav-icon icon-drop"></i> Colors</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#">
-                <i class="nav-icon icon-pencil"></i> Teaching</a>
+                <i class="nav-icon icon-pencil"></i> Typography</a>
             </li>
             <li class="nav-title">Components</li>
             <li class="nav-item nav-dropdown">
@@ -161,67 +138,67 @@
                 <i class="nav-icon icon-puzzle"></i> Base</a>
               <ul class="nav-dropdown-items">
                 <li class="nav-item">
-                  <a class="nav-link" href="{% static 'base/breadcrumb.html' %}">
+                  <a class="nav-link" href="{% static 'webgen/base/breadcrumb.html' %}">
                     <i class="nav-icon icon-puzzle"></i> Breadcrumb</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="{% static 'base/cards.html' %}">
+                  <a class="nav-link" href="{% static 'webgen/base/cards.html' %}">
                     <i class="nav-icon icon-puzzle"></i> Cards</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="{% static 'base/carousel.html' %}">
+                  <a class="nav-link" href="{% static 'webgen/base/carousel.html' %}">
                     <i class="nav-icon icon-puzzle"></i> Carousel</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="{% static 'base/collapse.html' %}">
+                  <a class="nav-link" href="{% static 'webgen/base/collapse.html' %}">
                     <i class="nav-icon icon-puzzle"></i> Collapse</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="{% static 'base/forms.html' %}">
+                  <a class="nav-link" href="{% static 'webgen/base/forms.html' %}">
                     <i class="nav-icon icon-puzzle"></i> Forms</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="{% static 'base/jumbotron.html' %}">
+                  <a class="nav-link" href="{% static 'webgen/base/jumbotron.html' %}">
                     <i class="nav-icon icon-puzzle"></i> Jumbotron</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="{% static 'base/list-group.html' %}">
+                  <a class="nav-link" href="{% static 'webgen/base/list-group.html' %}">
                     <i class="nav-icon icon-puzzle"></i> List group</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="{% static 'base/navs.html' %}">
+                  <a class="nav-link" href="{% static 'webgen/base/navs.html' %}">
                     <i class="nav-icon icon-puzzle"></i> Navs</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="{% static 'base/pagination.html' %}">
+                  <a class="nav-link" href="{% static 'webgen/base/pagination.html' %}">
                     <i class="nav-icon icon-puzzle"></i> Pagination</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="{% static 'base/popovers.html' %}">
+                  <a class="nav-link" href="{% static 'webgen/base/popovers.html' %}">
                     <i class="nav-icon icon-puzzle"></i> Popovers</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="{% static 'base/progress.html' %}">
+                  <a class="nav-link" href="{% static 'webgen/base/progress.html' %}">
                     <i class="nav-icon icon-puzzle"></i> Progress</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="{% static 'base/scrollspy.html' %}">
+                  <a class="nav-link" href="{% static 'webgen/base/scrollspy.html' %}">
                     <i class="nav-icon icon-puzzle"></i> Scrollspy</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="{% static 'base/switches.html' %}">
+                  <a class="nav-link" href="{% static 'webgen/base/switches.html' %}">
                     <i class="nav-icon icon-puzzle"></i> Switches</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="{% static 'base/tables.html' %}">
+                  <a class="nav-link" href="{% static 'webgen/base/tables.html' %}">
                     <i class="nav-icon icon-puzzle"></i> Tables</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="{% static 'base/tabs.html' %}">
+                  <a class="nav-link" href="{% static 'webgen/base/tabs.html' %}">
                     <i class="nav-icon icon-puzzle"></i> Tabs</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="{% static 'base/tooltips.html' %}">
+                  <a class="nav-link" href="{% static 'webgen/base/tooltips.html' %}">
                     <i class="nav-icon icon-puzzle"></i> Tooltips</a>
                 </li>
               </ul>
@@ -231,45 +208,46 @@
                 <i class="nav-icon icon-cursor"></i> Buttons</a>
               <ul class="nav-dropdown-items">
                 <li class="nav-item">
-                  <a class="nav-link" href="{% static 'buttons/buttons.html' %}">
+                  <a class="nav-link" href="{% static 'webgen/buttons/buttons.html' %}">
                     <i class="nav-icon icon-cursor"></i> Buttons</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="{% static 'buttons/button-group.html' %}">
+                  <a class="nav-link" href="{% static 'webgen/buttons/button-group.html' %}">
                     <i class="nav-icon icon-cursor"></i> Buttons Group</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="{% static 'buttons/dropdowns.html' %}">
+                  <a class="nav-link" href="{% static 'webgen/buttons/dropdowns.html' %}">
                     <i class="nav-icon icon-cursor"></i> Dropdowns</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="{% static 'buttons/brand-buttons.html' %}">
+                  <a class="nav-link" href="{% static 'webgen/buttons/brand-buttons.html' %}">
                     <i class="nav-icon icon-cursor"></i> Brand Buttons</a>
                 </li>
               </ul>
             </li>
+            
             <li class="nav-item nav-dropdown">
               <a class="nav-link nav-dropdown-toggle" href="#">
                 <i class="nav-icon icon-star"></i> Icons</a>
               <ul class="nav-dropdown-items">
                 <li class="nav-item">
-                  <a class="nav-link" href="{% static 'icons/coreui-icons.html' %}">
+                  <a class="nav-link" href="{% static 'webgen/icons/coreui-icons.html' %}">
                     <i class="nav-icon icon-star"></i> CoreUI Icons
                     <span class="badge badge-success">NEW</span>
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="{% static 'icons/flags.html' %}">
+                  <a class="nav-link" href="{% static 'webgen/icons/flags.html' %}">
                     <i class="nav-icon icon-star"></i> Flags</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="{% static 'icons/font-awesome.html' %}">
+                  <a class="nav-link" href="{% static 'webgen/icons/font-awesome.html' %}">
                     <i class="nav-icon icon-star"></i> Font Awesome
                     <span class="badge badge-secondary">4.7</span>
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="{% static 'icons/simple-line-icons.html' %}">
+                  <a class="nav-link" href="{% static 'webgen/icons/simple-line-icons.html' %}">
                     <i class="nav-icon icon-star"></i> Simple Line Icons</a>
                 </li>
               </ul>
@@ -279,21 +257,21 @@
                 <i class="nav-icon icon-bell"></i> Notifications</a>
               <ul class="nav-dropdown-items">
                 <li class="nav-item">
-                  <a class="nav-link" href="{% static 'notifications/alerts.html' %}">
+                  <a class="nav-link" href="{% static 'webgen/notifications/alerts.html' %}">
                     <i class="nav-icon icon-bell"></i> Alerts</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="{% static 'notifications/badge.html' %}">
+                  <a class="nav-link" href="{% static 'webgen/notifications/badge.html' %}">
                     <i class="nav-icon icon-bell"></i> Badge</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="{% static 'notifications/modals.html' %}">
+                  <a class="nav-link" href="{% static 'webgen/notifications/modals.html' %}">
                     <i class="nav-icon icon-bell"></i> Modals</a>
                 </li>
               </ul>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">
+              <a class="nav-link" href="{% static 'webgen/widgets.html' %}">
                 <i class="nav-icon icon-calculator"></i> Widgets
                 <span class="badge badge-primary">NEW</span>
               </a>
@@ -305,19 +283,19 @@
                 <i class="nav-icon icon-star"></i> Pages</a>
               <ul class="nav-dropdown-items">
                 <li class="nav-item">
-                  <a class="nav-link" href="{% url 'login' %}" target="_top">
+                  <a class="nav-link" href="#" target="_top">
                     <i class="nav-icon icon-star"></i> Login</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="{% url 'register' %}" target="_top">
+                  <a class="nav-link" href="#" target="_top">
                     <i class="nav-icon icon-star"></i> Register</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="#" target="_top">
+                  <a class="nav-link" href="{% static 'webgen/404.html' %}" target="_top">
                     <i class="nav-icon icon-star"></i> Error 404</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="#" target="_top">
+                  <a class="nav-link" href="{% static 'webgen/500.html' %}" target="_top">
                     <i class="nav-icon icon-star"></i> Error 500</a>
                 </li>
               </ul>
@@ -335,27 +313,32 @@
           </ul>
         </nav>
         <button class="sidebar-minimizer brand-minimizer" type="button"></button>
-      </div> <main class="main">fsygfysgd</main>
-    <footer class="app-footer">
-      <div>
-        <a href="#">CoreUI</a>
-        <span>&copy; 2018 creativeLabs.</span>
       </div>
-      <div class="ml-auto">
-        <span>Powered by</span>
-        <a href="#">CoreUI</a>
-      </div>
-    </footer>
+      <main class="main">
+        <!-- Breadcrumb-->
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item">Home</li>
+          <li class="breadcrumb-item">
+            <a href="#">Admin</a>
+          </li>
+          <li class="breadcrumb-item active">Dashboard</li>
+          <!-- Breadcrumb Menu-->
+          <li class="breadcrumb-menu d-md-down-none"> 
+          </li>
+        </ol>
+    {% block content %}{% endblock %}
+  </main>
+    
     <!-- CoreUI and necessary plugins-->
-    <script src="{% static 'vendors/jquery/js/jquery.min.js' %}"></script>
-    <script src="{% static 'vendors/popper.js/js/popper.min.js' %}"></script>
-    <script src="{% static 'vendors/bootstrap/js/bootstrap.min.js' %}"></script>
-    <script src="{% static 'vendors/pace-progress/js/pace.min.js' %}"></script>
-    <script src="{% static 'vendors/perfect-scrollbar/js/perfect-scrollbar.min.js' %}"></script>
-    <script src="{% static 'vendors/@coreui/coreui/js/coreui.min.js' %}"></script>
+    <script src="{% static 'webgen/vendors/jquery/js/jquery.min.js' %}"></script>
+    <script src="{% static 'webgen/vendors/popper.js/js/popper.min.js' %}"></script>
+    <script src="{% static 'webgen/vendors/bootstrap/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'webgen/vendors/pace-progress/js/pace.min.js' %}"></script>
+    <script src="{% static 'webgen/vendors/perfect-scrollbar/js/perfect-scrollbar.min.js' %}"></script>
+    <script src="{% static 'webgen/vendors/@coreui/coreui/js/coreui.min.js' %}"></script>
     <!-- Plugins and scripts required by this view-->
-    <script src="{% static 'vendors/chart.js/js/Chart.min.js' %}"></script>
-    <script src="{% static 'vendors/@coreui/coreui-plugin-chartjs-custom-tooltips/js/custom-tooltips.min.js' %}"></script>
-    <script src="{% static 'js/main.js' %}"></script>
+    <script src="{% static 'webgen/vendors/chart.js/js/Chart.min.js' %}"></script>
+    <script src="{% static 'webgen/vendors/@coreui/coreui-plugin-chartjs-custom-tooltips/js/custom-tooltips.min.js' %}"></script>
+    <script src="{% static 'webgen/js/main.js' %}"></script>
   </body>
 </html>
