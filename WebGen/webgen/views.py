@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages
-from .forms import UserRegistrationForm
+from .forms import UserRegistrationForm,UserUpdateForm,ProfileUpdateForm
 from django.contrib.auth.decorators import login_required
 def home(request):
 	return render(request, 'webgen/home.html')
@@ -22,6 +22,16 @@ def register(request):
 
 @login_required
 def profile(request):
-	return render(request, 'webgen/profile.html')
+	if request.method == 'POST':
+		u_form=UserUpdateForm(instance=request.POST)
+		p_form=ProfileUpdateForm(instance=request.user.profile)
+	else:
+		u_form=UserUpdateForm(instance=request.user)
+		p_form=ProfileUpdateForm(instance=request.user.profile)
+	context={
+    	'u_form':u_form,
+    	'p_form':p_form
+	}
+	return render(request, 'webgen/profile.html',context)
 
 # Create your views here.
