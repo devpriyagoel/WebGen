@@ -2,8 +2,17 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages
-from .forms import UserRegistrationForm,UserUpdateForm,ProfileUpdateForm
+from .forms import UserRegistrationForm, UserUpdateForm, ProfileUpdateForm
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
+from django.views.generic import (
+    ListView,
+    DetailView,
+    CreateView,
+    UpdateView,
+    DeleteView
+)
+from .models import Course
 def home(request):
 	return render(request, 'webgen/home.html')
 
@@ -23,8 +32,13 @@ def register(request):
 @login_required
 def profile(request):
 	if request.method == 'POST':
-		u_form=UserUpdateForm(instance=request.POST)
-		p_form=ProfileUpdateForm(instance=request.user.profile)
+		u_form=UserUpdateForm(request.POST, instance=request.user)
+		p_form=ProfileUpdateForm(request.POST, request.FILES, instance=request.user.profile)
+		
+		u_form.save()
+		p_form.save()
+		messages.success(request, f'Account updated!')
+		return redirect('profile')
 	else:
 		u_form=UserUpdateForm(instance=request.user)
 		p_form=ProfileUpdateForm(instance=request.user.profile)
@@ -33,5 +47,55 @@ def profile(request):
     	'p_form':p_form
 	}
 	return render(request, 'webgen/profile.html',context)
+@login_required
+def teaching(request):
+	context = {
+        'courses': Course.objects.all()
+    }
+	return render(request, 'webgen/teaching.html', context)
+
+class CourseListView(ListView):
+    model = Course
+    template_name = 'webgen/teaching.html'  # <app>/<model>_<viewtype>.html
+    context_object_name = 'courses'
+
+
+class CourseDetailView(DetailView):
+    model = Course
+
+
+class CourseCreateView(LoginRequiredMixin, CreateView):
+    model = Course
+    fields = ['course_title', 'content']
+
+    def form_valid(self, form):
+        form.instance.teacher = self.request.user
+        return super().form_valid(form)
+
+
+class CourseUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
+    model = Course
+    fields = ['course_title', 'content']
+
+    def form_valid(self, form):
+        form.instance.teacher = self.request.user
+        return super().form_valid(form)
+
+    def test_func(self):
+        course = self.get_object()
+        if self.request.user == course.teacher:
+            return True
+        return False
+
+
+class CourseDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
+    model = Course
+    success_url = 'teaching/' 
+
+    def test_func(self):
+        course = self.get_object()
+        if self.request.user == course.teacher:
+            return True
+        return False
 
 # Create your views here.

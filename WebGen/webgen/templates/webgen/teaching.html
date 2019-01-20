@@ -1,0 +1,14 @@
+{% extends "webgen/layout2.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+	<a class="nav-item nav-link" href="{% url 'course-create' %}">New Post</a>
+	{% for course in courses %}
+        <article class="media content-section">
+          <div class="media-body">
+            <h2><a class="article-title" href="{% url 'course-detail' course.id %}">{{ course.course_title }}</a></h2>
+            <p class="article-content">{{ course.content }}</p>
+          </div>
+        </article>
+	{% endfor %}
+
+{% endblock content %}

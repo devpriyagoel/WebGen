@@ -1,0 +1,17 @@
+{% extends "webgen/layout2.html" %}
+{% block content %}
+  <article class="media content-section">
+    <div class="media-body">
+      <div class="article-metadata">
+        {% if object.teacher == user %}
+          <div>
+            <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{% url 'course-update' object.id %}">Update</a>
+            <a class="btn btn-danger btn-sm mt-1 mb-1" href="{% url 'course-delete' object.id %}">Delete</a>
+          </div>
+        {% endif %}
+      </div>
+      <h2 class="article-title">{{ object.course_title }}</h2>
+      <p class="article-content">{{ object.content }}</p>
+    </div>
+  </article>
+{% endblock content %}

@@ -26,6 +26,7 @@
     <!-- Main styles for this application-->
     <link href="{% static 'webgen/css/style.css' %}" rel="stylesheet">
     <link href="{% static 'webgen/vendors/pace-progress/css/pace.min.css' %}" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{% static 'webgen/main.css' %}">
     <!-- Global site tag (gtag.js) - Google Analytics-->
     <script async="" src="{% static 'https://www.googletagmanager.com/gtag/js?id=UA-118965717-3' %}"></script>
     <script>
@@ -118,19 +119,18 @@
         <nav class="sidebar-nav">
           <ul class="nav">
             <li class="nav-item">
-              <a class="nav-link" href="{% url 'home' %}">
-                <i class="nav-icon icon-speedometer"></i> Dashboard
-                <span class="badge badge-primary">NEW</span>
+              <a class="nav-link" href="{% url 'profile' %}">
+                <i class="nav-icon icon-user"></i> Profile
               </a>
             </li>
-            <li class="nav-title">Theme</li>
+            <li class="nav-title">General</li>
             <li class="nav-item">
               <a class="nav-link" href="#">
-                <i class="nav-icon icon-drop"></i> Colors</a>
+                <i class="nav-icon icon-info"></i> About</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">
-                <i class="nav-icon icon-pencil"></i> Typography</a>
+              <a class="nav-link" href="{% url 'teaching' %}">
+                <i class="nav-icon icon-pencil"></i> Teaching</a>
             </li>
             <li class="nav-title">Components</li>
             <li class="nav-item nav-dropdown">
