@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages
-from .forms import UserRegistrationForm, UserUpdateForm, ProfileUpdateForm
+from .forms import UserRegistrationForm, UserUpdateForm, ProfileUpdateForm, AboutUpdateForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.views.generic import (
@@ -47,6 +47,21 @@ def profile(request):
     	'p_form':p_form
 	}
 	return render(request, 'webgen/profile.html',context)
+
+@login_required
+def about(request):
+	if request.method == 'POST':
+		a_form=AboutUpdateForm(request.POST, request.FILES, instance=request.user.about)
+		a_form.save()
+		messages.success(request, f'Account updated!')
+		return redirect('about')
+	else:
+		a_form=AboutUpdateForm(instance=request.user.about)
+	context={
+    	'a_form':a_form
+	}
+	return render(request, 'webgen/about.html',context)
+
 @login_required
 def teaching(request):
 	context = {
@@ -90,12 +105,13 @@ class CourseUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
 
 class CourseDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     model = Course
-    success_url = 'teaching/' 
+   # success_url = 'teaching/' 
 
     def test_func(self):
         course = self.get_object()
         if self.request.user == course.teacher:
             return True
         return False
+
 
 # Create your views here.

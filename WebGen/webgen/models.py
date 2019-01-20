@@ -18,6 +18,12 @@ class Profile(models.Model):
 			img.thumbnail(output_size)
 			img.save(self.image.path)
 
+class About(models.Model):
+	user = models.OneToOneField(User, on_delete=models.CASCADE)
+	name=models.CharField(max_length=250)
+	def __str__(self):
+		return self.name
+
 class Course(models.Model):
 	course_title = models.CharField(max_length=20)
 	content = models.TextField()
