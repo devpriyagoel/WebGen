@@ -34,4 +34,6 @@ class Course(models.Model):
 
 	def get_absolute_url(self):
 		return reverse('course-detail', kwargs={'pk': self.pk})
+
+
 # Create your models here.

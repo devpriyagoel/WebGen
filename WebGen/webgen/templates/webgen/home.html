@@ -1,5 +1,15 @@
 {% extends "webgen/layout.html" %}
 {% block content %}
-
+<form class = "form-inline my-2 my-lg-0">
+	<input class="fomr-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name='search' value="{{request.GET.search}}">
+	<button class="btn btn-outline-success my-2 my-sm-0" type ="submit">Search</button>
+</form>
+{% for about in abouts %}
+        <article class="media content-section">
+          <div class="media-body">
+            <h2><a class="article-title" href="#">{{ about.name }}</a></h2>
+          </div>
+        </article>
+	{% endfor %}
 
 {% endblock content %}

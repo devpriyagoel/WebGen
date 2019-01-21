@@ -12,9 +12,18 @@ from django.views.generic import (
     UpdateView,
     DeleteView
 )
-from .models import Course
+from .models import Course, About
+from django.core.files.storage import FileSystemStorage
+
+
 def home(request):
-	return render(request, 'webgen/home.html')
+	search_term = ''
+	abouts = About.objects.all()
+	if 'search' in request.GET:
+		search_term = request.GET['search']
+		abouts = About.objects.filter(name__icontains = search_term)
+	context = {'search_term':search_term, 'abouts':abouts}
+	return render(request, 'webgen/home.html', context)
 
 def register(request):
 	if request.method == 'POST':
@@ -112,6 +121,12 @@ class CourseDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
         if self.request.user == course.teacher:
             return True
         return False
+@login_required
+def upload(request):
+	if request.method=='POST':
+		uploaded_file=request.FILES['document']
+		fs=FileSystemStorage()
+		fs.save(uploaded_file.name, uploaded_file)
 
-
+	return render(request, 'webgen/upload.html')
 # Create your views here.
