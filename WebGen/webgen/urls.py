@@ -25,8 +25,8 @@ urlpatterns = [
     path('teaching/course/<int:pk>/update/', CourseUpdateView.as_view(), name='course-update'),
     path('teaching/course/<int:pk>/delete/', CourseDeleteView.as_view(), name='course-delete'),
     path('about/', views.about, name='about'),
-   	path('upload/', views.upload, name='upload')
-   	#path('search/<int:pk>/', views.website, name='website'),
+   	path('upload/', views.upload, name='upload'),
+   	path('search/<int:pk>/', views.prof_page, name='prof_page'),
 ]
 
 

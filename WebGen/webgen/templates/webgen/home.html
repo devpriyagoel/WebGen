@@ -7,7 +7,7 @@
 {% for about in abouts %}
         <article class="media content-section">
           <div class="media-body">
-            <h2><a class="article-title" href="#">{{ about.name }}</a></h2>
+            <h2><a class="article-title" href="{% url 'prof_page' about.id %}">{{ about.name }}</a></h2>
           </div>
         </article>
 	{% endfor %}

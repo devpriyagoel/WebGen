@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect,get_object_or_404
 from django.http import HttpResponse
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages
@@ -12,7 +12,7 @@ from django.views.generic import (
     UpdateView,
     DeleteView
 )
-from .models import Course, About
+from .models import Course, About,Profile
 from django.core.files.storage import FileSystemStorage
 
 
@@ -130,3 +130,14 @@ def upload(request):
 
 	return render(request, 'webgen/upload.html')
 # Create your views here.
+
+def prof_page(request, pk=None):
+	q = About.objects.get(pk=pk)
+	username = q.user.username
+	qs = get_object_or_404(Profile, user__username=username)
+	cou = Course.objects.filter(teacher__username=username)
+	abo = About.objects.filter(user__username=username)
+
+	context ={'q':q, 'qs':qs , 'cou':cou , 'abo':abo}
+
+	return render(request,'webgen/response.html' ,context)
