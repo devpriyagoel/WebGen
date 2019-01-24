@@ -14,7 +14,9 @@ from django.views.generic import (
 )
 from .models import Course, About,Profile
 from django.core.files.storage import FileSystemStorage
-
+from bs4 import BeautifulSoup
+import requests
+import urllib.request
 
 def home(request):
 	search_term = ''
@@ -37,6 +39,26 @@ def register(request):
 		form = UserRegistrationForm()
 	return render(request, 'webgen/register.html', {'form': form})
 
+def update(request, soup):
+    print("daman")
+    main = soup.find("div")
+    ed = main.findAll("p")
+    c = 13
+    for a in ed:
+        if 6 < c < 10:
+            degree = a.text.split(',')
+            sab = degree[0].split('\\n\\t\\t\\t')
+            print(degree)
+            print(sab)
+            e = education(education_of=request.user)
+
+            e.degree = sab[0]
+            e.left= ""
+            e.subject = sab[1]
+            e.joined = degree[2]
+            e.college = degree[1]
+            e.save()
+        c -= 1
 
 @login_required
 def profile(request):
@@ -44,9 +66,21 @@ def profile(request):
 		u_form=UserUpdateForm(request.POST, instance=request.user)
 		p_form=ProfileUpdateForm(request.POST, request.FILES, instance=request.user.profile)
 		
+		
+		if p_form.is_valid():
+			url = p_form.cleaned_data['already_have_a_website']
+			print(url)
+			data=urllib.request.urlopen(url).read()
+			soup=BeautifulSoup(str(data),"lxml")
+
+		
+		# print(p_form.instance.already_have_a_website)
+
+			#web scraping code
 		u_form.save()
 		p_form.save()
 		messages.success(request, f'Account updated!')
+
 		return redirect('profile')
 	else:
 		u_form=UserUpdateForm(instance=request.user)
